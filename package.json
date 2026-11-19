@@ -1,0 +1,14 @@
+{
+  "name": "fragmentos-do-acaso-parte-ii",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "serve": "npx http-server . -p 4173",
+    "audio": "node audio-generator.js",
+    "previews": "node render.js --preview",
+    "render": "node render.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.52.0"
+  }
+}

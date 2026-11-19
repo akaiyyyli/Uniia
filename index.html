@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fragmentos do Acaso — Parte II</title>
+  <style>
+    :root { --ink:#08080B; --paper:#F1F0F2; --purple:#7853A5; --orange:#B96D3C; --blue:#61788D; }
+    * { box-sizing:border-box; }
+    html,body { width:100%; height:100%; margin:0; overflow:hidden; background:#000; }
+    body { display:grid; place-items:center; }
+    #frame { position:relative; width:1920px; height:1080px; overflow:hidden; background:var(--ink); font-family:Georgia,'Times New Roman',serif; }
+    #frame:after { content:""; position:absolute; inset:0; pointer-events:none; box-shadow:inset 0 0 230px rgba(0,0,0,.82); z-index:100; }
+    .grain { position:absolute; inset:-40px; opacity:.12; z-index:90; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E"); }
+    .mono { font-family:'Courier New',monospace; }
+    .sans { font-family:Arial,Helvetica,sans-serif; }
+    .scene { position:absolute; inset:0; opacity:0; will-change:opacity,transform; }
+    .center { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
+    .title { color:var(--paper); text-align:center; }
+    .tiny { color:#aaa2ae; letter-spacing:.22em; }
+    #scene1 .title { width:1420px; font-size:40px; line-height:1.45; }
+    #scene2 .title { font-family:'Courier New',monospace; }
+    #record-year { font-size:112px; letter-spacing:.16em; }
+    #record-sub { margin-top:20px; font-size:24px; letter-spacing:.28em; }
+    #union-title { position:absolute; top:95px; width:100%; font-size:32px; letter-spacing:.02em; }
+    #org-lab { position:absolute; bottom:168px; width:100%; display:flex; justify-content:center; gap:130px; font-family:'Courier New',monospace; font-size:18px; letter-spacing:.18em; }
+    #union-sub { position:absolute; bottom:90px; width:100%; text-align:center; font-size:30px; }
+    #d20 { position:absolute; left:960px; top:520px; width:430px; height:430px; transform:translate(-50%,-50%); filter:drop-shadow(0 0 18px rgba(120,83,165,.28)); }
+    #year { position:absolute; width:100%; left:0; top:410px; text-align:center; font-size:150px; letter-spacing:.12em; color:var(--paper); }
+    #years-sub { position:absolute; width:100%; left:0; top:610px; text-align:center; font-family:'Courier New',monospace; font-size:25px; letter-spacing:.28em; color:#b9adb9; }
+    #archive { position:absolute; inset:0; perspective:1400px; transform-style:preserve-3d; }
+    .doc { position:absolute; width:330px; height:220px; border:1px solid rgba(241,240,242,.28); background:rgba(12,10,16,.82); box-shadow:0 20px 50px rgba(0,0,0,.5); transform-style:preserve-3d; }
+    .doc:before { content:""; position:absolute; left:28px; right:28px; top:42px; height:2px; background:rgba(241,240,242,.32); box-shadow:0 34px rgba(241,240,242,.16),0 68px rgba(241,240,242,.12),0 102px rgba(241,240,242,.09); }
+    .doc .code { position:absolute; left:28px; bottom:26px; color:#9d8ba5; font:14px 'Courier New',monospace; letter-spacing:.12em; }
+    #archive-copy1 { position:absolute; left:50%; bottom:250px; transform:translateX(-50%); width:1300px; font-size:38px; }
+    #archive-copy2 { position:absolute; left:50%; bottom:155px; transform:translateX(-50%); width:1450px; font-size:44px; font-weight:700; }
+    #shadow-creature { position:absolute; right:-100px; bottom:-180px; width:700px; height:760px; opacity:0; filter:blur(.2px); }
+    #warning1 { position:absolute; width:100%; top:400px; font-size:43px; }
+    #warning2 { position:absolute; width:100%; top:510px; font-size:46px; }
+    .people { position:absolute; inset:0; }
+    .person { position:absolute; width:56px; height:56px; opacity:0; border:1px solid #9f82ae; background:rgba(120,83,165,.12); transform:rotate(45deg); }
+    #reunion1,#reunion2,#reunion3 { position:absolute; width:100%; text-align:center; font-family:'Courier New',monospace; }
+    #reunion1 { top:310px; } #reunion2 { top:520px; } #reunion3 { bottom:290px; }
+    #final-title { width:100%; text-align:center; }
+    #final-main { font-size:82px; letter-spacing:.11em; }
+    #final-sub { margin-top:25px; font-size:28px; letter-spacing:.42em; color:#c3b2cc; }
+    #final-year { margin-top:26px; font:18px 'Courier New',monospace; letter-spacing:.5em; color:#9f96a3; }
+    #glitch { position:absolute; inset:0; opacity:0; background:linear-gradient(90deg,transparent 0 42%,rgba(120,83,165,.3) 42.2% 42.7%,transparent 43% 76%,rgba(97,120,141,.16) 76.2% 77%,transparent 77.4%); mix-blend-mode:screen; }
+  </style>
+</head>
+<body>
+  <div id="frame">
+    <div id="scene1" class="scene"><div id="typed" class="title center"></div></div>
+
+    <div id="scene2" class="scene">
+      <div class="title center"><div id="record-year">2014</div><div id="record-sub">REGISTROS RECOLHIDOS</div></div>
+    </div>
+
+    <div id="scene3" class="scene">
+      <div id="union-title" class="title">Três organizações se uniram.</div>
+      <svg id="d20" viewBox="0 0 430 430" aria-label="D20 formado por três organizações">
+        <g id="shapeA"><polygon points="215,15 215,215 72,112" fill="#B96D3C" fill-opacity=".72" stroke="#C68A60"/><path d="M215 15L72 112L215 215Z" fill="none" stroke="#D2A080"/></g>
+        <g id="shapeB"><polygon points="215,15 215,215 358,112" fill="#7853A5" fill-opacity=".72" stroke="#9672B7"/><path d="M215 15L358 112L215 215Z" fill="none" stroke="#B18BC8"/></g>
+        <g id="shapeC"><polygon points="72,112 215,215 358,112 358,318 215,415 72,318" fill="#61788D" fill-opacity=".62" stroke="#849BAC"/><path d="M215 215L358 318L215 415L72 318Z" fill="none" stroke="#9BAAB5"/></g>
+        <polygon points="215,15 358,112 358,318 215,415 72,318 72,112" fill="none" stroke="#F1F0F2" stroke-opacity=".75" stroke-width="3"/>
+        <text id="d20number" x="215" y="295" text-anchor="middle" fill="#F1F0F2" font-family="Georgia" font-size="84">1</text>
+      </svg>
+      <div id="org-lab"><span style="color:#B96D3C">IGNIS</span><span style="color:#9672B7">OMNUS</span><span style="color:#849BAC">INTELLECTUS FINIS</span></div>
+      <div id="union-sub" class="title">Um marco histórico foi feito.</div>
+    </div>
+
+    <div id="scene4" class="scene">
+      <div id="year">2019</div>
+      <div id="years-sub">CINCO ANOS DEPOIS</div>
+    </div>
+
+    <div id="scene5" class="scene">
+      <div id="archive">
+        <div class="doc" data-depth="1" style="left:80px;top:160px;transform:rotateY(18deg) rotateZ(-4deg)"><span class="code">SA // 0017 // ARQUIVO ABSTRATO</span></div>
+        <div class="doc" data-depth="2" style="right:90px;top:110px;transform:rotateY(-18deg) rotateZ(5deg)"><span class="code">REGISTRO // 1837 // INDEFINIDO</span></div>
+        <div class="doc" data-depth="3" style="left:260px;bottom:100px;transform:rotateY(12deg) rotateZ(3deg)"><span class="code">CATÁLOGO // LOCAL DESCONHECIDO</span></div>
+        <div class="doc" data-depth="4" style="right:260px;bottom:120px;transform:rotateY(-12deg) rotateZ(-3deg)"><span class="code">DOCUMENTO // ORIGEM NÃO IDENTIFICADA</span></div>
+      </div>
+      <div id="archive-copy1" class="title">Agora, vamos desenterrar informações esquecidas.</div>
+      <div id="archive-copy2" class="title">Informações que jamais deveriam ter sido encontradas.</div>
+    </div>
+
+    <div id="scene6" class="scene">
+      <svg id="shadow-creature" viewBox="0 0 700 760"><path d="M620 760C590 540 510 445 442 320C430 290 445 230 420 175C390 110 472 70 512 24C500 100 572 125 540 210C520 268 555 340 560 430C570 560 675 620 620 760Z" fill="#040306"/><path d="M462 285C390 250 350 180 356 100C325 190 335 300 400 360Z" fill="#09070C"/><circle cx="443" cy="302" r="5" fill="#7853A5"/></svg>
+      <div id="warning1" class="title">Nem toda ameaça deve ser enfrentada.</div>
+      <div id="warning2" class="title">Apenas um tolo ignora os limites da própria força.</div>
+    </div>
+
+    <div id="scene7" class="scene">
+      <div id="reunion1" class="title" style="font-size:29px">Da primeira vez, cinco se reuniram.</div>
+      <div id="reunion2" class="title" style="font-size:29px">Desta vez, mais cinco se reunirão.</div>
+      <div id="reunion3" class="title" style="font-size:31px">Objetivos semelhantes. Mas nunca iguais.</div>
+      <div id="people" class="people"></div>
+    </div>
+
+    <div id="scene8" class="scene">
+      <div id="final-title" class="center">
+        <div id="final-main" class="title">FRAGMENTOS DO ACASO</div>
+        <div id="final-sub">PARTE II</div>
+        <div id="final-year">2019</div>
+      </div>
+      <div id="glitch"></div>
+    </div>
+
+    <div id="grain" class="grain"></div>
+  </div>
+
+  <script>
+    const D = 34;
+    const $ = s => document.querySelector(s);
+    const scenes = [1,2,3,4,5,6,7,8].map(n => $(`#scene${n}`));
+    const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+    const lerp=(a,b,p)=>a+(b-a)*p;
+    const smooth=v=>{v=clamp(v);return v*v*(3-2*v)};
+    const fade=(t,a,b,e=.5)=>smooth((t-a)/e)*smooth((b-t)/e);
+    const ease=t=>{t=clamp(t);return 1-Math.pow(1-t,3)};
+
+    for(let i=0;i<10;i++){
+      const el=document.createElement('div');
+      el.className='person';
+      el.dataset.i=i;
+      $('#people').appendChild(el);
+    }
+
+    function typeText(t,start,speed){
+      const text="A queda de uma organização não significa o fim daquilo que ela representa.";
+      const p=clamp((t-start)*speed);
+      $('#typed').textContent=text.slice(0,Math.floor(p*text.length))+(p>0&&p<1?'│':'');
+    }
+
+    window.seek=function(t){
+      t=clamp(t,0,D);
+      scenes.forEach(s=>s.style.opacity=0);
+
+      if(t<4){
+        $('#scene1').style.opacity=fade(t,0,4,.25);
+        typeText(t,.45,4.2/3.55);
+      }
+      if(t>=4&&t<7){
+        $('#scene2').style.opacity=fade(t,4,7,.35);
+        const p=ease((t-4)/.8);
+        $('#record-year').style.opacity=p;
+        $('#record-sub').style.opacity=ease((t-4.7)/.8);
+        $('#record-year').style.transform=`translateY(${lerp(20,0,p)}px)`;
+      }
+      if(t>=7&&t<13){
+        $('#scene3').style.opacity=fade(t,7,13,.35);
+        $('#union-title').style.opacity=fade(t,7.2,9,.4);
+        const q=ease((t-8)/3);
+        $('#shapeA').style.transform=`translate(${-lerp(350,0,q)}px,${lerp(-70,0,q)}px) scale(${lerp(.7,1,q)})`;
+        $('#shapeB').style.transform=`translate(0,${-lerp(160,0,q)}px) scale(${lerp(.7,1,q)})`;
+        $('#shapeC').style.transform=`translate(${lerp(350,0,q)}px,${lerp(90,0,q)}px) scale(${lerp(.7,1,q)})`;
+        $('#d20').style.transform=`translate(-50%,-50%) scale(${lerp(.76,1,ease((t-8.8)/2.7))}) rotate(${lerp(-5,0,(t-8)/5)}deg)`;
+        $('#d20number').setAttribute('opacity',ease((t-10.6)/.7));
+        $('#union-sub').style.opacity=fade(t,10.4,12.7,.45);
+      }
+      if(t>=13&&t<16){
+        $('#scene4').style.opacity=fade(t,13,16,.35);
+        const p=ease((t-13)/1.3);
+        $('#year').style.transform=`scale(${lerp(.7,1,p)}) translateY(${lerp(30,0,p)}px)`;
+        $('#year').style.opacity=p;
+        $('#years-sub').style.opacity=ease((t-13.8)/.7);
+        $('#year').style.filter=`blur(${Math.max(0,Math.sin(t*3)*1.2)}px)`;
+      }
+      if(t>=16&&t<22){
+        $('#scene5').style.opacity=fade(t,16,22,.35);
+        const z=(t-16)*18;
+        $('#archive').style.transform=`translateZ(${-z}px) rotateX(${lerp(-2,1,(t-16)/6)}deg)`;
+        document.querySelectorAll('.doc').forEach((doc,i)=>{
+          doc.style.translate=`0 ${Math.sin(t*1.2+i)*lerp(20,40,(i%2))}px`;
+          doc.style.opacity=fade(t,16+i*.12,21.4,.6);
+        });
+        $('#archive-copy1').style.opacity=fade(t,17.1,20.5,.5);
+        $('#archive-copy1').style.transform=`translateX(-50%) translateY(${lerp(20,0,ease((t-17)/1))}px)`;
+        $('#archive-copy2').style.opacity=fade(t,19.1,21.7,.5);
+      }
+      if(t>=22&&t<27){
+        $('#scene6').style.opacity=fade(t,22,27,.35);
+        document.querySelectorAll('.doc').forEach(doc=>doc.style.opacity*=0.5);
+        $('#warning1').style.opacity=fade(t,22.2,25.3,.45);
+        $('#warning2').style.opacity=fade(t,24.1,26.8,.45);
+        const p=ease((t-23)/2.8);
+        $('#shadow-creature').style.opacity=smooth((t-23)/1.2)*.78;
+        $('#shadow-creature').style.transform=`translate(${lerp(120,0,p)}px,${lerp(80,0,p)}px) scale(${lerp(.86,1,p)})`;
+      }
+      if(t>=27&&t<31){
+        $('#scene7').style.opacity=fade(t,27,31,.28);
+        $('#reunion1').style.opacity=fade(t,27.1,28.7,.35);
+        $('#reunion2').style.opacity=fade(t,28.2,29.8,.35);
+        $('#reunion3').style.opacity=fade(t,29.5,30.8,.35);
+        document.querySelectorAll('.person').forEach((el,i)=>{
+          const row=i<5?0:1; const col=i<5?i:i-5;
+          const x=650+col*155+(row?20*(col-2):0);
+          const y=row?610:470;
+          const start=row?28.2:27.4+(i*.08);
+          const p=ease((t-start)/.7);
+          el.style.left=`${x}px`; el.style.top=`${y}px`; el.style.opacity=p;
+          el.style.width=`${lerp(44,56,(i%3)/2)}px`; el.style.height=`${lerp(44,56,((i+1)%3)/2)}px`;
+          el.style.transform=`translateY(${lerp(30,0,p)}px) rotate(${lerp(45,45+(i%2?12:-12)*ease((t-start)/.7))}deg)`;
+        });
+      }
+      if(t>=31&&t<=34){
+        $('#scene8').style.opacity=fade(t,31,34,.28);
+        $('#glitch').style.opacity=t>31&&t<31.45?1-t%0.08*8:0;
+        const p=ease((t-31.2)/1);
+        $('#final-main').style.opacity=p;
+        $('#final-main').style.transform=`scale(${lerp(.94,1,p)}px)`;
+        $('#final-sub').style.opacity=ease((t-32)/.45);
+        $('#final-year').style.opacity=ease((t-32.35)/.45);
+        if(t>=33.92) $('#scene8').style.opacity=(34-t)/.08;
+      }
+
+      $('#grain').style.transform=`translate(${Math.sin(t*23)*7}px,${Math.cos(t*19)*5}px)`;
+      document.documentElement.style.setProperty('--time',t);
+    };
+
+    // A primeira chamada garante que o visual seja determinístico no último frame.
+    window.seek(0);
+  </script>
+</div>
+</body>
+</html>
